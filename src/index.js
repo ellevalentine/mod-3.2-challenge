@@ -142,20 +142,23 @@ function BeerSelected(beer){
 
 function editBeer(beer){
 
-    beerInfo = beer.description
+
     let textAreaValue = document.querySelector(`#des-${beer.id}`).value
-    
+    beer.description = textAreaValue
+
+
+
+
     fetch(`http://localhost:3000/beers/${beer.id}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'},
-        body: JSON.stringify({"description": textAreaValue})
+        body: JSON.stringify(beer)
     })
 
     alert("Description updated.")
+
 }
-
-
 
 
